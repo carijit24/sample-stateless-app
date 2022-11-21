@@ -28,7 +28,7 @@ spec:
         name: bucketlist-stateless
         resources: {}
         volumeMounts:
-        - mountPath: "/app-storage"
+        - mountPath: /app-storage
           name: bucketlist-storage
 status: {}
 
