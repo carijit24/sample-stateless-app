@@ -19,16 +19,15 @@ spec:
         app: bucketlist-stateless
     spec:
       volumes:
-      - name: bucketlist-storage
+      - name: stateless-bucketlist-storage
         hostPath:
-          path: /app-storage
-          type: Directory
+          path: /data
       containers:
       - image: 033407704869.dkr.ecr.us-west-2.amazonaws.com/bucketlist:stateless
         name: bucketlist-stateless
         resources: {}
         volumeMounts:
         - mountPath: /app-storage
-          name: bucketlist-storage
+          name: stateless-bucketlist-storage
 status: {}
 
