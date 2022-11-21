@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: bucketlist-stateless
+  name: bucketlist-stateless
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bucketlist-stateless
+  strategy: 
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: bucketlist-stateless
+    spec:
+      volumes:
+      - name: bucketlist-storage
+        hostPath:
+          path: /app-storage
+          type: Directory
+      containers:
+      - image: 033407704869.dkr.ecr.us-west-2.amazonaws.com/bucketlist:v4
+        name: bucketlist-stateless
+        resources: {}
+        volumeMounts:
+        - mountPath: "/app-storage"
+          name: bucketlist-storage
+status: {}
+
